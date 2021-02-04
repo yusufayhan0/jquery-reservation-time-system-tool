@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Rezervasyon</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
+
+    <style>
+        /* ----------------------------------*/
+
+html { width: 100%; height:100%; overflow:hidden; }
+
+body { 
+    width: 100%;
+    height:100%;
+    font-family: 'Open Sans', sans-serif;
+    background: #092756;
+    background: -moz-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%),-moz-linear-gradient(top,  rgba(57,173,219,.25) 0%, rgba(42,60,87,.4) 100%), -moz-linear-gradient(-45deg,  #670d10 0%, #092756 100%);
+    background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%), -webkit-linear-gradient(top,  rgba(57,173,219,.25) 0%,rgba(42,60,87,.4) 100%), -webkit-linear-gradient(-45deg,  #670d10 0%,#092756 100%);
+    background: -o-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%), -o-linear-gradient(top,  rgba(57,173,219,.25) 0%,rgba(42,60,87,.4) 100%), -o-linear-gradient(-45deg,  #670d10 0%,#092756 100%);
+    background: -ms-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%), -ms-linear-gradient(top,  rgba(57,173,219,.25) 0%,rgba(42,60,87,.4) 100%), -ms-linear-gradient(-45deg,  #670d10 0%,#092756 100%);
+    background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%), linear-gradient(to bottom,  rgba(57,173,219,.25) 0%,rgba(42,60,87,.4) 100%), linear-gradient(135deg,  #670d10 0%,#092756 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3E1D6D', endColorstr='#092756',GradientType=1 );
+}
+.login { 
+    margin: 15px;
+    height:150;
+    min-width: 100px;
+}
+
+
+
+        .kutular {
+            width: 36px;
+            height: 25px;
+            border: 1px solid #666;
+            background-color: #283e62;
+            margin-bottom: 10px;
+            float: left;
+            margin-left: 2px;
+            text-align: center;
+        }
+
+        .kutular p {
+            color: #fff;
+            margin: 0px;
+            padding: 0px;
+            width: 100%;
+            height: 100%;
+            display: block;
+            cursor: pointer;
+            font-size: 12px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        #app {
+            float: left;
+        }
+
+
+
+        .kutu2 p {
+            color: #fff;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 13;
+            width: 100%;
+            height: 100%;
+            border: 1px solid #666;
+        }
+
+        .kutu2 {
+            width: 46px;
+            height: 26px;
+
+            margin-bottom: 10px;
+            background-color: #5a3544;
+            float: left;
+            text-align: center;
+        }
+
+        .bucuk {
+            display: none;
+        }
+
+        #bucukButton {
+            margin-bottom: 10px;
+        }
+    </style>
+
+
+
+
+</head>
+
+<body>
+
+    <center style="margin:auto;width:fit-content;border:1px solid" class="d-flex align-items-center">
+
+        <div class="login">
+            <div style="margin-bottom: 18px;">
+                <h2 style="font-size: 22px;font-family: 'Open Sans', sans-serif;text-align: left;">Servis
+                    <b>Kayıt</b>
+                </h2>
+            </div>
+
+            <form>
+
+
+
+                <div id="bucukButton" class="btn btn-dark btn-sm float-left mr-2">Buçuklar</div>
+                <div id="ekleButton" class="btn btn-dark btn-sm float-left">Ekle</div>
+
+                <div class="clearfix"></div>
+                <div id="app" class="float-left;" style="margin-right: 10px;">
+
+
+
+                    <div class="kutular" data-item="">
+                        <p>09:00</p>
+                    </div>
+                    <div class="kutular bucuk" data-item="">
+                        <p>09:30</p>
+                    </div>
+                    <div class="kutular" data-item="">
+                        <p>10:00</p>
+                    </div>
+                    <div class="kutular bucuk" data-item="">
+                        <p>10:30</p>
+                    </div>
+                    <div class="bucuk" style="clear: both;"></div>
+                    <div class="kutular" data-item="">
+                        <p>11:00</p>
+                    </div>
+                    <div class="kutular bucuk" data-item="">
+                        <p>11:30</p>
+                    </div>
+                    <div class="kutular" data-item="">
+                        <p>12:00</p>
+                    </div>
+                    <div class="kutular bucuk" data-item="">
+                        <p>12:30</p>
+                    </div>
+                    <div style="clear: both;"></div>
+                    <div class="kutular" data-item="">
+                        <p>13:00</p>
+                    </div>
+                    <div class="kutular bucuk" data-item="">
+                        <p>13:30</p>
+                    </div>
+                    <div class="kutular" data-item="">
+                        <p>14:00</p>
+                    </div>
+                    <div class="kutular bucuk" data-item="">
+                        <p>14:30</p>
+                    </div>
+                    <div class="bucuk" style="clear: both;"></div>
+                    <div class="kutular" data-item="">
+                        <p>15:00</p>
+                    </div>
+                    <div class="kutular bucuk" data-item="">
+                        <p>15:30</p>
+                    </div>
+                    <div class="kutular" data-item="">
+                        <p>16:00</p>
+                    </div>
+
+                    <div class="kutular bucuk" data-item="">
+                        <p>16:30</p>
+                    </div>
+                    <div style="clear: both;"></div>
+                    <div class="kutular" data-item="">
+                        <p>17:00</p>
+                    </div>
+                    <div class="kutular bucuk" data-item="">
+                        <p>17:30</p>
+                    </div>
+                    <div class="kutular" data-item="">
+                        <p>18:00</p>
+                    </div>
+
+                    <div class="kutular bucuk" data-item="">
+                        <p>18:30</p>
+                    </div>
+                    <div class="bucuk" style="clear: both;"></div>
+                    <div class="kutular" data-item="">
+                        <p>19:00</p>
+                    </div>
+                    <div class="kutular bucuk" data-item="">
+                        <p>19:30</p>
+                    </div>
+                    <div style="clear: both;"></div>
+                </div>
+
+                <div id="app2" style="float: left;">
+
+                    <div class="kutular" data-item="">
+                        <p>10:00</p>
+                    </div>
+                    <div class="kutular bucuk" data-item="">
+                        <p>10:30</p>
+                    </div>
+                    <div class="kutular" data-item="">
+                        <p>11:00</p>
+                    </div>
+                    <div class="kutular bucuk" data-item="">
+                        <p>11:30</p>
+                    </div>
+                    <div class="bucuk" style="clear: both;"></div>
+                    <div class="kutular" data-item="">
+                        <p>12:00</p>
+                    </div>
+                    <div class="kutular bucuk" data-item="">
+                        <p>12:30</p>
+                    </div>
+                    <div class="kutular" data-item="">
+                        <p>13:00</p>
+                    </div>
+                    <div class="kutular bucuk" data-item="">
+                        <p>13:30</p>
+                    </div>
+                    <div style="clear: both;"></div>
+                    <div class="kutular" data-item="">
+                        <p>14:00</p>
+                    </div>
+                    <div class="kutular bucuk" data-item="">
+                        <p>14:30</p>
+                    </div>
+                    <div class="kutular" data-item="">
+                        <p>15:00</p>
+                    </div>
+                    <div class="kutular bucuk" data-item="">
+                        <p>15:30</p>
+                    </div>
+                    <div class="bucuk" style="clear: both;"></div>
+                    <div class="kutular" data-item="">
+                        <p>16:00</p>
+                    </div>
+                    <div class="kutular bucuk" data-item="">
+                        <p>16:30</p>
+                    </div>
+                    <div class="kutular" data-item="">
+                        <p>17:00</p>
+                    </div>
+
+                    <div class="kutular bucuk" data-item="">
+                        <p>17:30</p>
+                    </div>
+                    <div style="clear: both;"></div>
+                    <div class="kutular" data-item="">
+                        <p>18:00</p>
+                    </div>
+                    <div class="kutular bucuk" data-item="">
+                        <p>18:30</p>
+                    </div>
+                    <div class="kutular" data-item="">
+                        <p>19:00</p>
+                    </div>
+
+                    <div class="kutular bucuk" data-item="">
+                        <p>19:30</p>
+                    </div>
+                    <div class="bucuk" style="clear: both;"></div>
+                    <div class="kutular" data-item="">
+                        <p>20:00</p>
+                    </div>
+                    <div class="kutular bucuk" data-item="">
+                        <p>20:30</p>
+                    </div>
+                    <div style="clear: both;"></div>
+                </div>
+
+                <div class="clearfix"></div>
+                <div id="saatlerText" style="margin-right: 5px;">
+                    <div id="kutu0" class="kutu2">
+
+                        <p></p>
+                    </div>
+                    <div id="kutu1" class="kutu2">
+
+                        <p></p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <hr>
+                <div id="saatkutuoncesi" class="clearfix"></div>
+
+            </form>
+
+
+
+
+
+
+        </div>
+
+
+
+
+        </div>
+
+    </center>
+
+
+
+
+
+
+    <script>
+
+        $(document).ready(function () {
+            let eklesayac = 0;
+            let saatler = [];
+            let giris;
+            let cikis;
+
+            $("form").on("click", ".addboxx", function (e) {
+                if ($(e.target).prop("tagName") == "P") {
+                    $(e.target).parent().parent().remove();
+                    saatler = saatler.filter(f => f.Id != parseInt($(e.target).parent().parent().attr("data-item")))
+                }
+                //console.log(saatler)
+            })
+
+            let saatId = 0;
+            $("#ekleButton").click(function () {
+
+
+
+
+                if ($("#kutu1 p").text() != "" && $("#kutu0 p").text() != "") {
+                    if (saatler.find(saat => saat.giris == $("#kutu0 p").text() && saat.cikis == $("#kutu1 p").text()) == null) {
+                        if (parseFloat($("#kutu1 p").text()) - parseFloat($("#kutu0 p").text()) > 3) {
+                            alert("ohaaa");
+                        }
+                        else {
+                            saatId++;
+                            saatler.push({ Id: saatId, giris: $("#kutu0 p").text(), cikis: $("#kutu1 p").text() })
+
+
+                            $("#saatkutuoncesi").after("<div style='float:left; cursor:pointer; margin-right:5px; width:auto;margin-bottom:5px' data-item='" + saatId + "'><div id='kutubitti1' class='kutu2 addboxx' style='margin-bottom:0px'><p>" + $("#kutu0 p").text() + "</p></div><div style='margin-bottom:0px' id='kutubitti2' class='kutu2 addboxx'><p>" + $("#kutu1 p").text() + "</p></div></div>");
+                            if (eklesayac > 1) {
+                                $("#saatkutuoncesi").after("<div class='clearfix'></div>");
+                                eklesayac %= 2;
+                                eklesayac--;
+                            }
+                            eklesayac++;
+                        }
+                    }
+                    else {
+                        alert("aynı süre zaten eklenmiştir");
+                    }
+                }
+                else {
+                    alert("iki zamanıda seçmeniz gerekmektedir");
+                }
+
+
+
+
+            })
+
+            let buc = false;
+            $("#bucukButton").click(function () {
+                if (!buc) {
+                    $(".bucuk").css("display", "block");
+                    buc = !buc;
+                }
+                else {
+                    $(".bucuk").css("display", "none");
+                    buc = !buc;
+                    if ($("#kutu1 p").text().charAt(3) == '3')
+                        $("#kutu1 p").text("")
+                    if ($("#kutu0 p").text().charAt(3) == '3')
+                        $("#kutu0 p").text("")
+
+                }
+            });
+
+
+            let temp = 0;
+
+            let onceki = null;
+            let onceki2 = null;
+
+            let k = 0;
+            let sayac2 = 0;
+            $("#app div p").click(function (e) {
+                let i = 1;
+                let sayac = 0;
+
+                //rgb(255, 0, 0)
+                if (onceki != null) {
+                    if ($(e.target).css("backgroundColor") != "rgb(255, 0, 0)" && onceki.text() == $(e.target).text()) {
+                        $(e.target).css("background-color", "red")
+                        $("#kutu0 p").text($(e.target).text());
+                        if ($(e.target).text() != "09:00" && $(e.target).text() != "09:30")
+                            while (true) {
+                                $("#app2 div:nth-child(" + i + ") p").css("background-color", "gray")
+                                $("#app2 div:nth-child(" + i + ") p").css("pointer-events", "none")
+                                if ($("#app2 div:nth-child(" + i + ") p").text() == $(e.target).text()) {
+                                    i++;
+                                    break;
+                                }
+                                i++;
+                            }
+                    }
+                    else if (onceki.text() != $(e.target).text()) {
+                        $("#kutu0 p").text($(e.target).text());
+                        $(e.target).css("background-color", "red")
+                        onceki.css("background-color", "#283e62")
+                    }
+                    else {
+                        $("#kutu0 p").text("");
+                        $(e.target).css("background-color", "#283e62")
+                        for (let d = 1; d < temp; d++) {
+                            $("#app2 div:nth-child(" + d + ") p").css("background-color", "#283e62")
+                            $("#app2 div:nth-child(" + d + ") p").css("pointer-events", "auto")
+                        }
+                    }
+                }
+                else {
+                    $("#kutu0 p").text($(e.target).text());
+                    $(e.target).css("background-color", "red")
+                }
+
+                if ($(e.target).text() != "09:00" && $(e.target).text() != "09:30") {
+
+                    if (onceki == null) {
+                        while (true) {
+                            $("#app2 div:nth-child(" + i + ") p").css("background-color", "gray")
+                            $("#app2 div:nth-child(" + i + ") p").css("pointer-events", "none")
+                            if ($("#app2 div:nth-child(" + i + ") p").text() == $(e.target).text()) {
+                                i++;
+                                break;
+                            }
+                            i++;
+                        }
+                    }
+                    else {
+
+                        if (onceki.text() != $(e.target).text())
+                            while (true) {
+                                $("#app2 div.kutular:nth-child(" + i + ") p").css("background-color", "gray")
+                                $("#app2 div.kutular:nth-child(" + i + ") p").css("pointer-events", "none")
+                                if ($("#app2 .kutular:nth-child(" + i + ") p").text() == $(e.target).text()) {
+                                    i++;
+                                    break;
+                                }
+                                i++;
+                            }
+
+
+
+
+
+
+                        // if($("#app2 div.kutular:nth-child(" + i + ") p").css("backgroundColor") != "rgb(255, 0, 0)"&&document.querySelector("#app2 .kutular:nth-child(" + i + ") p")!=null)
+                        //         sayac++;
+                        //     if($("#app div.kutular:nth-child(" + i + ") p").css("backgroundColor") != "rgb(255, 0, 0)"&&document.querySelector("#app .kutular:nth-child(" + i + ") p")!=null)
+                        //         sayac2++;
+
+
+                    }
+                    let a = 0;
+                    let count1 = $("#app div").length;
+
+                    while (a < count1) {
+                        if ($(e.target).text() == $("#app div.kutular:nth-child(" + a + ") p").text()) {
+                            sayac++;
+                            break;
+                        }
+                        if (document.querySelector("#app .kutular:nth-child(" + a + ") p") != null)
+                            sayac++;
+                        a++;
+                    }
+
+
+                    if (i < temp) {
+                        for (let d = i; d < temp; d++) {
+                            $("#app2 div:nth-child(" + d + ") p").css("background-color", "#283e62")
+                            $("#app2 div:nth-child(" + d + ") p").css("pointer-events", "auto")
+                        }
+                    }
+
+                    if (sayac - 2 >= sayac2)
+                        $("#kutu1 p").text("");
+
+                    console.log("count : " + count1)
+                    console.log("sayac : " + (sayac))
+                    console.log("sayac2 : " + sayac2)
+
+                    temp = i;
+                }
+                else {
+                    for (let d = i; d < temp; d++) {
+                        $("#app2 div:nth-child(" + d + ") p").css("background-color", "#283e62")
+                        $("#app2 div:nth-child(" + d + ") p").css("pointer-events", "auto")
+                    }
+                }
+                onceki = $(e.target);
+            })
+
+            $("#app2 div p").click(function (e) {
+                sayac2 = 0;
+                //rgb(255, 0, 0)
+                if (onceki2 != null) {
+                    if ($(e.target).css("backgroundColor") != "rgb(255, 0, 0)" && onceki2.text() == $(e.target).text()) {
+                        $(e.target).css("background-color", "red")
+                        $("#kutu1 p").text($(e.target).text());
+                    }
+                    else if (onceki2.text() != $(e.target).text()) {
+                        $("#kutu1 p").text($(e.target).text());
+                        $(e.target).css("background-color", "red")
+                        if (onceki2.css("backgroundColor") != "rgb(128, 128, 128)")
+                            onceki2.css("background-color", "#283e62")
+                    }
+                    else {
+                        $("#kutu1 p").text("");
+                        $(e.target).css("background-color", "#283e62")
+                    }
+                }
+                else {
+                    $(e.target).css("background-color", "red")
+                    $("#kutu1 p").text($(e.target).text());
+                }
+
+                let a = 0;
+                let count1 = $("#app2 div").length;
+                while (a < count1) {
+                    if ($(e.target).text() == $("#app2 div.kutular:nth-child(" + a + ") p").text()) {
+                        sayac2++;
+                        break;
+                    }
+                    if (document.querySelector("#app2 .kutular:nth-child(" + a + ") p") != null)
+                        sayac2++;
+                    a++;
+                }
+                onceki2 = $(e.target);
+            })
+        });
+
+
+    </script>
+
+</body>
+
+</html>
