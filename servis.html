@@ -338,7 +338,7 @@ body {
                 if ($("#kutu1 p").text() != "" && $("#kutu0 p").text() != "") {
                     if (saatler.find(saat => saat.giris == $("#kutu0 p").text() && saat.cikis == $("#kutu1 p").text()) == null) {
                         if (parseFloat($("#kutu1 p").text()) - parseFloat($("#kutu0 p").text()) > 3) {
-                            alert("ohaaa");
+                            alert("maximum 3 saat seçilebilir");
                         }
                         else {
                             saatId++;
